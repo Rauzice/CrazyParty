@@ -1,0 +1,42 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:CrazyParty.BinSrc" >
+
+    <Style TargetType="local:CrazyPartyTile">
+        <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CrazyPartyTile">
+                    <Border 
+                        Width="220" 
+                        Height="220"
+                        BorderBrush="{StaticResource PhoneAccentBrush}"
+                        BorderThickness="10">
+                        <Border.Resources>
+                            <local:SelectedToVisiblityConverter x:Key="SelectedToVisiblityConverter" />
+                        </Border.Resources>
+                        <Canvas>
+                            <Grid Width="200" Height="200"
+                                Background="{StaticResource PhoneBackgroundBrush}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock FontSize="{StaticResource PhoneFontSizeMediumLarge}" Width="200" Grid.Row="0" Text="{TemplateBinding  Title}"/>
+                                <TextBlock FontSize="{StaticResource PhoneFontSizeNormal}" TextWrapping="Wrap" Width="200" Grid.Row="1" Text="{TemplateBinding Abstract}"/>
+                            </Grid>
+                            <Border BorderBrush="Goldenrod"
+                                    BorderThickness="4"
+                                    Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Selected, Converter={StaticResource SelectedToVisiblityConverter}}"
+                                    Width="200" Height="200">
+                                <Grid Opacity="0"></Grid>
+                            </Border>
+                        </Canvas>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
