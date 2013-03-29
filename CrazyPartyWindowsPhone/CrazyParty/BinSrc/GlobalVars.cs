@@ -14,13 +14,15 @@ namespace CrazyParty.BinSrc
 {
     public class GlobalVars
     {
-        public static string Server = @"http://192.168.1.102:3001";
+        public static string WebServer = @"http://192.168.1.102:3001";
+        public static string GameServer = @"http://192.168.1.102:3456";
+        public static string GameWSServer = @"ws://192.168.1.102:3005";
 
         public static UserRegisterHelper userRegisterHelper = new UserRegisterHelper();
         public static UserLoginHelper userLoginHelper = new UserLoginHelper();
         public static UserProfileHelper userProfileHelper = new UserProfileHelper();
 
-        public static GameWebHelper gameHelp = new GameWebHelper();
+        public static GameHelper gameHelper;
 
         public static UserInfo userInfo = new UserInfo();
     }
