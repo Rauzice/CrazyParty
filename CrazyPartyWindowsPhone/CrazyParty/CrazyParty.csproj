@@ -82,31 +82,26 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BinSrc\BinControls\BinDice.cs" />
-    <Compile Include="BinSrc\BinControls\BinDiceConverter.cs" />
     <Compile Include="BinSrc\BinException.cs" />
     <Compile Include="BinSrc\MD5.cs" />
     <Compile Include="BinSrc\Model\UserInfo.cs" />
     <Compile Include="BinSrc\Pages\BullsAndCows.xaml.cs">
       <DependentUpon>BullsAndCows.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BinSrc\WebHelpers\GameHelper.cs" />
-    <Compile Include="BinSrc\Pages\LocalDicingPage.xaml.cs">
-      <DependentUpon>LocalDicingPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="BinSrc\GameHelper.cs" />
     <Compile Include="BinSrc\Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="BinSrc\Pages\TrueWordAndBudRedhead.xaml.cs">
       <DependentUpon>TrueWordAndBudRedhead.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BinSrc\WebHelpers\UserProfileHelper.cs" />
-    <Compile Include="BinSrc\WebHelpers\UserRegisterHelper.cs" />
+    <Compile Include="BinSrc\UserProfileHelper.cs" />
+    <Compile Include="BinSrc\UserRegisterHelper.cs" />
     <Compile Include="BinSrc\GlobalVars.cs" />
-    <Compile Include="BinSrc\BinControls\CrazyPartyTile.cs" />
-    <Compile Include="BinSrc\BinControls\CrazyPartyTileConverter.cs" />
-    <Compile Include="BinSrc\WebHelpers\UserLoginHelper.cs" />
-    <Compile Include="BinSrc\WebHelpers\UserRequestResult.cs" />
+    <Compile Include="BinSrc\CrazyPartyTile.cs" />
+    <Compile Include="BinSrc\CrazyPartyTileConverter.cs" />
+    <Compile Include="BinSrc\UserLoginHelper.cs" />
+    <Compile Include="BinSrc\UserRequestResult.cs" />
     <Compile Include="BinSrc\Pages\SpinBottlePage.xaml.cs">
       <DependentUpon>SpinBottlePage.xaml</DependentUpon>
     </Compile>
@@ -173,10 +168,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BinSrc\Pages\LocalDicingPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="BinSrc\Pages\RegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -206,6 +197,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="BinSrc\TrueWordsAndBuddRedhead.xml" />
+    <Resource Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Resource Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Resource Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Resource Include="Toolkit.Content\ApplicationBar.Select.png" />
     <Resource Include="Resources\SpinBottleBG.png" />
     <Resource Include="Resources\框.png" />
     <Resource Include="Resources\Bottle.png" />

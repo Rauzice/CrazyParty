@@ -60,6 +60,8 @@ namespace CrazyParty
                 CrazyPartyTile tile = (CrazyPartyTile)item;
                 punishmens.Add(tile);
             }
+
+            GlobalVars.gameHelper = new GameHelper(this);
         }
 
         public Microsoft.Phone.Shell.ApplicationBarIconButton loginSubmit, registerBtn;
@@ -125,7 +127,26 @@ namespace CrazyParty
 
         private void startLocalGame(object sender, EventArgs e)
         {
-            NavigationService.Navigate(new Uri("/BinSrc/Pages/BullsAndCows.xaml", UriKind.Relative));
+            //GlobalVars.gameHelper.connect();
+            //NavigationService.Navigate(new Uri("/BinSrc/Pages/BullsAndCows.xaml", UriKind.Relative));
+            switch (SelectedGame)
+            {
+                case 0:
+                {
+                    NavigationService.Navigate(new Uri("/BinSrc/Pages/SpinBottlePage.xaml", UriKind.Relative));
+                    break;
+                }
+                case 1:
+                {
+                    NavigationService.Navigate(new Uri("/BinSrc/Pages/BullsAndCows.xaml", UriKind.Relative));
+                    break;
+                }
+                case 2:
+                {
+                    NavigationService.Navigate(new Uri("/BinSrc/Pages/BullsAndCows.xaml", UriKind.Relative));
+                    break;
+                }
+            }
         }
 
         private void startOnlineGame(object sender, EventArgs e)

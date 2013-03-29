@@ -18,7 +18,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
         <Grid.Background>
-            <ImageBrush ImageSource="..\Resources\SpinBottleBG.png"></ImageBrush>
+            <ImageBrush ImageSource="..\..\Resources\SpinBottleBG.png"></ImageBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="260"/>
@@ -39,7 +39,7 @@
                 <TextBlock Canvas.Left="110" Canvas.Top="90" x:Name="resultNumber" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="80" TextAlignment="Center" Visibility="Visible"/>
                 <Image Canvas.Left="110" x:Name="indicator" Width="80" Height="280" Opacity="0.5"
                     RenderTransformOrigin="0.5,0.5" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseMove="StackPanel_MouseMove"
-                    Source="..\Resources\Bottle.png">
+                    Source="..\..\Resources\Bottle.png">
                     <Image.RenderTransform>
                         <RotateTransform x:Name="rotale" Angle="0" ></RotateTransform>
                     </Image.RenderTransform>
