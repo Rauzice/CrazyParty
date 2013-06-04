@@ -41,85 +41,88 @@ create table if not exists User(
 --  -----------------------  --
 create table if not exists RegisterCode(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  userId bigint(20) unsigned NOT NULL,
+  userid bigint(20) unsigned NOT NULL,
   requestTime datetime not null,
   avaiableTime datetime not null,
   checkCode varchar(10) COLLATE utf8_unicode_ci not null,
   PRIMARY KEY (id),
-  foreign key (userId) references User(id)
+  foreign key (userid) references User(id)
 )ENGINE=InnoDB AUTO_INCREMENT=12307 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 create table if not exists ForgetPassword(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  userId bigint(20) unsigned NOT NULL,
+  userid bigint(20) unsigned NOT NULL,
   requestTime datetime not null,
   avaiableTime datetime not null,
   checkCode varchar(10) COLLATE utf8_unicode_ci not null,
   PRIMARY KEY (id),
-  foreign key (userId) references User(id)
+  foreign key (userid) references User(id)
 )ENGINE=InnoDB AUTO_INCREMENT=11101 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-
---  -----------------------  --
---   table structure for  LiarDiceGame --
---  winner, 1 means player1 win and 2 player2 win --
---  state: 0 means waiting, 1 means started and Dicing, 2 means waiting player 1, 3 means waiting player2, 4 means ended --
---  -----------------------  --
-create table if not exists LiarDiceGame(
-	id bigint(20) unsigned not null AUTO_INCREMENT,
-	state smallint(5) not null default '0',
-	winner bigint(20) unsigned not null,
-	startTime datetime not null,
-	endTime datetime not null,
-	primary key (id),
-	foreign key (winner) references User(id)
-)ENGINE=InnoDB AUTO_INCREMENT=10123 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-
---  -----------------------  --
---   table structure for DicingGame --
---  state: 0 means waiting, 1 means started and Dicing, 4 means ended --
---  -----------------------  --
-create table if not exists DicingGame(
-	id bigint(20) unsigned not null AUTO_INCREMENT,
-	state smallint(5) not null default '0',
-	winner int unsigned,
-	startTime datetime not null,
-	endTime datetime not null,
-	primary key (id)
-)ENGINE=InnoDB AUTO_INCREMENT=20249 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 
 --  -----------------------  --
 --   table structure for PlayLiarDice --
 --  status: 0 means palyer1, 1 means palyer2 --
 --  -----------------------  --
-create table if not exists PlayLiarDice(
+create table if not exists LiarDicePlayer(
 	id bigint(20) unsigned not null AUTO_INCREMENT,
-	userId bigint(20) unsigned NOT NULL,
-	gameId bigint(20) unsigned NOT NULL,
+	userid bigint(20) unsigned not null,
 	dices char(10) not null default '00000',
-	lastUpdateTime datetime not null,
 	liarCount int not null default 0,
 	liarPoint int not null default 0,
-	status smallint not null,
+	showDices bool not null default false,
+	enterTime datetime,
+	leaveTime datetime,
 	primary key (id),
-	foreign key (userId) references User(id),
-	foreign key (gameId) references LiarDice(id)
-)ENGINE=InnoDB AUTO_INCREMENT=32209 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+ 	foreign key (userid) references User(id)
+)ENGINE=InnoDB AUTO_INCREMENT=32207 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --  -----------------------  --
 --   table structure for PlayDicing --
 --  -----------------------  --
-create table if not exists PlayDicing(
+create table if not exists DicingPlayer(
 	id bigint(20) unsigned not null AUTO_INCREMENT,
-	userId bigint(20) unsigned NOT NULL,
-	gameId bigint(20) unsigned NOT NULL,
+	userid bigint(20) unsigned not null,
 	dices char(3) not null default '000',
-	lastUpdateTime datetime not null,
-	status smallint not null,
+	enterTime datetime,
+	leaveTime datetime,
 	primary key (id),
-	foreign key (userId) references User(id)
+ 	foreign key (userid) references User(id)
 )ENGINE=InnoDB AUTO_INCREMENT=32232 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--  -----------------------  --
+--   table structure for  LiarDiceGame --
+--  state: 0 means waiting, 1 means started and Dicing, 2 means waiting player 1, 3 means waiting player2, 4 means ended --
+--  -----------------------  --
+create table if not exists LiarDiceGame(
+	id bigint(20) unsigned not null AUTO_INCREMENT,
+	player1id bigint(20) unsigned not null,
+	player2id bigint(20) unsigned not null,
+	state smallint(5) not null default '0',
+	winnerid bigint(20) unsigned,
+	startTime datetime not null,
+	endTime datetime not null,
+	primary key (id),
+	foreign key (winnerid) references User(id),
+	foreign key (player1id) references LiarDicePlayer(id),
+	foreign key (player2id) references LiarDicePlayer(id)
+)ENGINE=InnoDB AUTO_INCREMENT=10123 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+--  -----------------------  --
+--   table structure for DicingGame --
+--  state: 0 means waiting, 1 means started and Dicing, 2 means waiting player1 to play, 3 means waiting player2 to play,  4 means ended --
+--  -----------------------  --
+create table if not exists DicingGame(
+	id bigint(20) unsigned not null AUTO_INCREMENT,
+	player1id bigint(20) unsigned not null,
+	player2id bigint(20) unsigned not null,
+	state smallint(5) not null default '0',
+	winnerid bigint(20) unsigned,
+	startTime datetime not null,
+	endTime datetime not null,
+	primary key (id),
+	foreign key (winnerid) references User(id),
+	foreign key (player1id) references DicingPlayer(id),
+	foreign key (player2id) references DicingPlayer(id)
+)ENGINE=InnoDB AUTO_INCREMENT=20249 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

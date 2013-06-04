@@ -1,0 +1,8 @@
+{
+	"connectSuccess",
+	"connectFailed",
+	"allocateSuccess",
+	"gameStart",
+	"gameState",
+	"gameEnd"
+}

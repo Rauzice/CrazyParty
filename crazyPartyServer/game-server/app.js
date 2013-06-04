@@ -1,0 +1,26 @@
+#!/usr/local/bin/node
+
+var mysql = require('./dao/mysql/mysql');
+var binlog = require('./util/binlog');
+
+var WebSocketServer = require('ws').Server;
+var wsServer = new WebSocketServer({'port' : 3456});
+var wsh = require('./wsHandler');
+
+wsServer.on('connection', function(ws){
+	//var wsh = new WsHandler();
+	ws.on('message', function(message){
+		wsh.message(this, message,{});
+	});
+	
+	ws.on('close', function(code, message){
+		wsh.close(this, code, message);
+	});
+	
+	wsh.open(ws);
+	//msg = "连接服务器成功.";
+	//ws.send(JSON.stringify({code: 100, content:{message: msg}}));
+});
+
+mysql.init();
+binlog.log('game server on ws://127.0.0.1:3456 started.');

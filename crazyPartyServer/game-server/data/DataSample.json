@@ -1,0 +1,39 @@
+﻿requests : 
+{
+	JoinRequest :
+	{
+		code : 100,
+		content :
+		{
+			userId : 123123213,
+			gametype : liardice
+		}
+	},
+	CancelJoinRequest :
+	{
+		code : 101,
+		userId : 123123213,
+		gametype : liardice
+	},
+	PrepareRequest : 
+	{
+		code : 200,
+		userId : 123123213,
+		roomId : 345345345,
+		sessionId : 234234234
+	},
+	CancelPrepareRequest : 
+	{
+		code : 200,
+		userId : 123123213,
+		roomId : 345345345,
+		sessionId : 234234234,
+	}
+},
+responce : 
+{
+	JoinSuccessResponce :
+	{
+		code : 100,
+	}
+}

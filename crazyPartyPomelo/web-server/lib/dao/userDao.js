@@ -65,6 +65,41 @@ userDao.getUserInfo = function(username, password, cb){
 };
 
 /**
+ * Get userInfo by username
+ * @param {String} username
+ * @param {User} user
+ * @param {funciton} cb Call Back Function
+*/
+userDao.updateUserInfo = function(username, password, cb){
+	var sql = 'select * from User where name = ? and password = ?';
+	var args = [username, password];
+	mysql.query(sql, args, function(err, res){
+		if(err!=null){
+			cb(err.message, null);
+		}
+		else{
+			if(!!res && res.length === 1){
+				var rs = res[0];
+				var user = {
+						UserId: rs.id, Username: rs.name, 
+						Email: rs.email, From: rs.from, 
+						State: rs.state, LoginCount: rs.loginCount, 
+						LastLoginTime: rs.lastLoginTime, Moment: rs.moment,
+						Birthday: rs.birthday, Gender: rs.gender, 
+						Avatar: rs.avatar, 
+						LiarDiceTotalCount: rs.LiarDiceTotalCount, LiarDiceWinCount: rs.LiarDiceWinCount, 
+						DicingTotalCount: rs.DicingTotalCount, DicingWinCount: rs.DicingWinCount, 
+						};
+				cb(null, user);
+			}
+			else{
+				cb('username or password is incorrect.', null);
+			}
+		}
+	});
+};
+
+/**
 * Get userInfo by email
 * @param {String} email
 * @param {funciton} cb Call Back Function

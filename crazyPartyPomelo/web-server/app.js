@@ -37,34 +37,38 @@ app.configure('production', function(){
 app.get('/login', function(req, res){
 	var postData = url.parse(req.url, true).query;
 	console.log(postData);
-	var username = postData.username;
-	var pwd = postData.password;
+	var username = "";
+	var pwd = "";
+	if(!!postData.username)
+		username = postData.username.toLowerCase();
+	if(!!postData.password)
+		pwd = postData.password.toLowerCase();
 	pwd = binCommon.MD5(pwd);
 	
 	res.contentType('json');
 	
 	if(!username || !pwd){
 		var msg = 'username or password is empty';
-		res.send(JSON.stringify({code: 100, message: msg}));
+		res.send(JSON.stringify({code: 100, content:{message: msg}}));
 		return ;
 	}
 	userDao.getUserInfo(username, pwd, function(err, user){
 		if(!!err){
 			var msg = err;
 			console.log(msg);
-			res.send(JSON.stringify({code: 500, message: msg, user:null}));
+			res.send(JSON.stringify({code: 500, content:{message: msg, user:null}}));
 			return ;
 		}
 		if(!user){
 			var msg = 'Unexcepted error occured when getting user\'s information.';
 			console.log(msg);
-			res.send(JSON.stringify({code: 501, message: msg, user:null}));
+			res.send(JSON.stringify({code: 501, content:{message: msg, user:null}}));
 			return ;
 		}
 		
 		var msg = username + ' login sucessfully.';
 		console.log(msg);
-		res.send(JSON.stringify({code: 200, message:msg, user:user}));
+		res.send(JSON.stringify({code: 200, content: {message:msg, user:user}}));
 	});
 });
 
@@ -74,20 +78,24 @@ app.post('/login', function(req, res){
 	
 	//var paras = querystring.parse(postData);
 	
-	var username = postData.username.toLowerCase();
-	var pwd = postData.password.toLowerCase();
+	var username = "";
+	var password = "";
+	if(!!postData.username)
+		username = postData.username.toLowerCase();
+	if(!!postData.password)
+		password = postData.password.toLowerCase();
 	
 	console.log();
 	
 	res.contentType('json');
 	
-	if(!username || !pwd){
+	if(!username || !password){
 		var msg = 'username or password is empty';
 		res.send(JSON.stringify({code: 100, message: msg}));
 		return ;
 	}
 	
-	userDao.getUserInfo(username, pwd, function(err, user){
+	userDao.getUserInfo(username, password, function(err, user){
 		if(!!err){
 			var msg = err;
 			console.log(msg);
@@ -109,8 +117,12 @@ app.post('/login', function(req, res){
 
 app.post('/register', function(req, res){
 	var postData = req.body;
-	var username = postData.username.toLowerCase();
-	var password = postData.password.toLowerCase();
+	var username = "";
+	var password = "";
+	if(!!postData.username)
+		username = postData.username.toLowerCase();
+	if(!!postData.password)
+		password = postData.password.toLowerCase();
 	
 	res.contentType('json');
 	
