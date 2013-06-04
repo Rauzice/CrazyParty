@@ -3,5 +3,10 @@
     <AssemblyPart x:Name="CrazyParty" Source="CrazyParty.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls" Source="Microsoft.Phone.Controls.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
+    <AssemblyPart x:Name="SimpleJson" Source="SimpleJson.dll" />
+    <AssemblyPart x:Name="SuperSocket.ClientEngine.Common" Source="SuperSocket.ClientEngine.Common.dll" />
+    <AssemblyPart x:Name="SuperSocket.ClientEngine.Core" Source="SuperSocket.ClientEngine.Core.dll" />
+    <AssemblyPart x:Name="SuperSocket.ClientEngine.Protocol" Source="SuperSocket.ClientEngine.Protocol.dll" />
+    <AssemblyPart x:Name="SuperSocket.ClientEngine.Proxy" Source="SuperSocket.ClientEngine.Proxy.dll" />
   </Deployment.Parts>
 </Deployment>
