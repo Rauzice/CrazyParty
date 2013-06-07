@@ -135,7 +135,7 @@ namespace CrazyParty
             showResult();
             timer.Stop();
             isRotating = false;
-            //NavigationService.Navigate(new Uri("/PunishmentPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri(@"/BinSrc/Pages/TrueWordAndBudRedhead.xaml", UriKind.Relative));
         }
 
 

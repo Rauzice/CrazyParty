@@ -93,6 +93,7 @@
     <Compile Include="BinSrc\MD5.cs" />
     <Compile Include="BinSrc\Model\BinRequest.cs" />
     <Compile Include="BinSrc\Model\BinResponce.cs" />
+    <Compile Include="BinSrc\Model\Punishment.cs" />
     <Compile Include="BinSrc\Model\ReqCancelJoinGame.cs" />
     <Compile Include="BinSrc\Model\ResLiarDiceGameStateContent.cs" />
     <Compile Include="BinSrc\Model\ReqJoinGame.cs" />

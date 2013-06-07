@@ -1,23 +1,23 @@
-﻿<xapCache source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\CrazyParty.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="6/6/2013 AM 1:43:51">
+﻿<xapCache source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\CrazyParty.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="7/6/2013 PM 7:14:27">
   <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="17/2/2013 PM 12:13:29" />
   <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Background.png" archivePath="Background.png" lastWriteTime="5/2/2013 AM 11:02:35" />
   <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="5/2/2013 AM 11:02:35" />
-  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\CrazyParty.dll" archivePath="CrazyParty.dll" lastWriteTime="6/6/2013 AM 1:43:50" />
+  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\CrazyParty.dll" archivePath="CrazyParty.dll" lastWriteTime="7/6/2013 PM 7:14:25" />
   <file source="C:\Program Files\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="19/3/2012 PM 4:29:06" />
-  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\libs\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="3/3/2013 PM 9:59:36" />
+  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\libs\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="7/6/2013 PM 3:08:33" />
   <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\WebSocket4Net(0.8).Source\Reference\SimpleJson\WP7\SimpleJson.dll" archivePath="SimpleJson.dll" lastWriteTime="17/7/2012 PM 4:32:52" />
   <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\WebSocket4Net(0.8).Source\Reference\SuperSocket.ClientEngine\WP71\Release\SuperSocket.ClientEngine.Common.dll" archivePath="SuperSocket.ClientEngine.Common.dll" lastWriteTime="17/7/2012 PM 4:32:52" />
   <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\WebSocket4Net(0.8).Source\Reference\SuperSocket.ClientEngine\WP71\Release\SuperSocket.ClientEngine.Core.dll" archivePath="SuperSocket.ClientEngine.Core.dll" lastWriteTime="17/7/2012 PM 4:32:52" />
   <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\WebSocket4Net(0.8).Source\Reference\SuperSocket.ClientEngine\WP71\Release\SuperSocket.ClientEngine.Protocol.dll" archivePath="SuperSocket.ClientEngine.Protocol.dll" lastWriteTime="17/7/2012 PM 4:32:52" />
   <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\WebSocket4Net(0.8).Source\Reference\SuperSocket.ClientEngine\WP71\Release\SuperSocket.ClientEngine.Proxy.dll" archivePath="SuperSocket.ClientEngine.Proxy.dll" lastWriteTime="17/7/2012 PM 4:32:52" />
   <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\BinSrc\TrueWordsAndBuddRedhead.xml" archivePath="BinSrc\TrueWordsAndBuddRedhead.xml" lastWriteTime="3/3/2013 PM 3:45:11" />
-  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.add.rest.png" archivePath="Icons\light\appbar.add.rest.png" lastWriteTime="8/4/2013 PM 8:52:14" />
-  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.back.rest.png" archivePath="Icons\light\appbar.back.rest.png" lastWriteTime="9/4/2013 AM 9:34:23" />
-  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.check.rest.png" archivePath="Icons\light\appbar.check.rest.png" lastWriteTime="8/4/2013 PM 8:52:14" />
-  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.close.rest.png" archivePath="Icons\light\appbar.close.rest.png" lastWriteTime="8/4/2013 PM 8:52:14" />
-  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.refresh.rest.png" archivePath="Icons\light\appbar.refresh.rest.png" lastWriteTime="8/4/2013 PM 8:52:14" />
-  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.play.rest.png" archivePath="Icons\light\appbar.play.rest.png" lastWriteTime="8/4/2013 PM 8:52:14" />
+  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.add.rest.png" archivePath="Icons\light\appbar.add.rest.png" lastWriteTime="7/6/2013 PM 3:08:33" />
+  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.back.rest.png" archivePath="Icons\light\appbar.back.rest.png" lastWriteTime="7/6/2013 PM 3:08:33" />
+  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.check.rest.png" archivePath="Icons\light\appbar.check.rest.png" lastWriteTime="7/6/2013 PM 3:08:33" />
+  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.close.rest.png" archivePath="Icons\light\appbar.close.rest.png" lastWriteTime="7/6/2013 PM 3:08:33" />
+  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.refresh.rest.png" archivePath="Icons\light\appbar.refresh.rest.png" lastWriteTime="7/6/2013 PM 3:08:33" />
+  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Icons\light\appbar.play.rest.png" archivePath="Icons\light\appbar.play.rest.png" lastWriteTime="7/6/2013 PM 3:08:33" />
   <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="17/2/2013 PM 12:52:27" />
   <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\SplashScreenImage.bak.jpg" archivePath="SplashScreenImage.bak.jpg" lastWriteTime="5/2/2013 AM 11:02:35" />
-  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="6/6/2013 AM 1:43:51" />
+  <file source="E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="7/6/2013 PM 7:14:27" />
 </xapCache>

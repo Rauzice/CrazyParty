@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using CrazyParty.BinSrc.Model;
 
 namespace CrazyParty.BinSrc.Pages
 {
@@ -18,6 +19,13 @@ namespace CrazyParty.BinSrc.Pages
         public TrueWordAndBudRedhead()
         {
             InitializeComponent();
+
+            this.punishment.Text = Punishment.GetPunishment();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }
