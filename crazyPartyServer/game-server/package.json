@@ -1,0 +1,14 @@
+{
+  "name": "websocket-test",
+  "description": "a test project of websocket.",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "2.5.2",
+    "ws": "x",
+    "generic-pool" : ">=1.0.9",
+    "mysql" : ">=2.0",
+    "nodeunit": "*",
+    "dateformat" : "x"
+  }
+}

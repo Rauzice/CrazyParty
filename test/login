@@ -1,0 +1,1 @@
+curl http://127.0.0.1:3001/login -d "username=bin&password=123123123"
