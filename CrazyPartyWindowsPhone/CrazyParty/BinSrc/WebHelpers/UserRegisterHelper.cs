@@ -20,17 +20,20 @@ namespace CrazyParty.BinSrc
 {
     public class UserRegisterHelper
     {
-        public void Init()
+        public void Init(RegisterPage rp)
         {
+            _registerPage = rp;
             registerReturned = false;
             registerTimer = new DispatcherTimer();
             registerTimer.Interval = TimeSpan.FromSeconds(10);
-            rr = new RegisterResult();
+            rr = new RegisterResponce();
         }
+
+        private RegisterPage _registerPage;
 
         private DispatcherTimer registerTimer;
         private bool registerReturned;
-        private RegisterResult rr;
+        private RegisterResponce rr;
 
         private bool CheckUserNameFormat(string username)
         {
@@ -62,22 +65,22 @@ namespace CrazyParty.BinSrc
             if (!CheckUserNameFormat(username))
             {
                 rr.code = 101;
-                rr.message = "用户名格式不正确";
-                RegisterFailed(rp);
+                rr.content.message = "用户名格式不正确";
+                RegisterFailed();
                 return;
             }
             if (!CheckPasswordFormat(password))
             {
                 rr.code = 102;
-                rr.message = "密码长度应为6—20";
-                RegisterFailed(rp);
+                rr.content.message = "密码长度应为6—20";
+                RegisterFailed();
                 return;
             }
             if(!CheckEqualPasswords(password, password1))
             {
                 rr.code = 103;
-                rr.message = "两次输入的密码不相同";
-                RegisterFailed(rp);
+                rr.content.message = "两次输入的密码不相同";
+                RegisterFailed();
                 return;
             }
 
@@ -99,22 +102,22 @@ namespace CrazyParty.BinSrc
                 registerReturned = true;
                 if (e.Error != null)
                 {
-                    rr = new RegisterResult() { code = 404, message = e.Error.Message };
+                    rr = new RegisterResponce() { code = 404, content = new Model.ResRegisterContent() { message = e.Error.Message } };
                 }
                 else
                 {
                     MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(e.Result));
                     //RegisterResult rr = new RegisterResult();
-                    DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(RegisterResult));
-                    rr = (RegisterResult)serializer.ReadObject(ms);
+                    DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(RegisterResponce));
+                    rr = (RegisterResponce)serializer.ReadObject(ms);
                 }
                 if (rr.code == 200)
                 {
-                    RegisterSuccess(rp);
+                    RegisterSuccess();
                 }
                 else
                 {
-                    RegisterFailed(rp);
+                    RegisterFailed();
                 }
             };
             registerWC.UploadStringAsync(registerPath, "POST", parameters.ToString());
@@ -125,25 +128,31 @@ namespace CrazyParty.BinSrc
                     return;
                 registerReturned = true;
                 registerTimer.Stop();
-                rr = new RegisterResult() { code=400, message="连接服务器超时." };
-                RegisterFailed(rp);
+                rr = new RegisterResponce() { code = 400, content = new Model.ResRegisterContent() { message = "连接服务器超时." } };
+                RegisterFailed();
             };
             
             registerTimer.Start();
         }
 
-        private void RegisterSuccess(RegisterPage rp)
+        private void RegisterSuccess()
         {
-            ((Microsoft.Phone.Shell.ApplicationBarIconButton)rp.ApplicationBar.Buttons[0]).IsEnabled = true;
-            if (MessageBox.Show("注册成功") == MessageBoxResult.OK)
-                rp.NavigationService.GoBack();
+            _registerPage.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                ((Microsoft.Phone.Shell.ApplicationBarIconButton)_registerPage.ApplicationBar.Buttons[0]).IsEnabled = true;
+                if (MessageBox.Show("注册成功") == MessageBoxResult.OK)
+                    _registerPage.NavigationService.GoBack();
+            }));
         }
 
-        public void RegisterFailed(RegisterPage rp)
+        public void RegisterFailed()
         {
-            string msg = "注册失败. " + rr.message;
-            ((Microsoft.Phone.Shell.ApplicationBarIconButton)rp.ApplicationBar.Buttons[0]).IsEnabled = true;
-            MessageBox.Show(msg);
+            _registerPage.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                string msg = "注册失败. " + rr.content.message;
+                ((Microsoft.Phone.Shell.ApplicationBarIconButton)_registerPage.ApplicationBar.Buttons[0]).IsEnabled = true;
+                MessageBox.Show(msg);
+            }));
         }
 
         public string GetMd5Hash(string input)

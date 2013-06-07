@@ -82,29 +82,60 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BinSrc\BinControls\LocalGameTile.cs" />
+    <Compile Include="BinSrc\BinControls\LocalGameTileConverter.cs" />
+    <Compile Include="BinSrc\BinControls\Dice.xaml.cs">
+      <DependentUpon>Dice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BinSrc\BinControls\OnlineGameTile.cs" />
+    <Compile Include="BinSrc\BinControls\OnlineGameTileConverter.cs" />
     <Compile Include="BinSrc\BinException.cs" />
     <Compile Include="BinSrc\MD5.cs" />
+    <Compile Include="BinSrc\Model\BinRequest.cs" />
+    <Compile Include="BinSrc\Model\BinResponce.cs" />
+    <Compile Include="BinSrc\Model\ReqCancelJoinGame.cs" />
+    <Compile Include="BinSrc\Model\ResLiarDiceGameStateContent.cs" />
+    <Compile Include="BinSrc\Model\ReqJoinGame.cs" />
+    <Compile Include="BinSrc\Model\ReqJoinGameContent.cs" />
+    <Compile Include="BinSrc\Model\ResAllocateContent.cs" />
+    <Compile Include="BinSrc\Model\ResRegisterContent.cs" />
+    <Compile Include="BinSrc\Model\ResLoginContent.cs" />
+    <Compile Include="BinSrc\Model\OnlineGameInfo.cs" />
+    <Compile Include="BinSrc\Model\ReqPrepared.cs" />
+    <Compile Include="BinSrc\Model\ResShowResultContent.cs" />
+    <Compile Include="BinSrc\Model\ResStartGameContent.cs" />
+    <Compile Include="BinSrc\Model\StateRequest.cs" />
     <Compile Include="BinSrc\Model\UserInfo.cs" />
     <Compile Include="BinSrc\Pages\BullsAndCows.xaml.cs">
       <DependentUpon>BullsAndCows.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BinSrc\GameHelper.cs" />
+    <Compile Include="BinSrc\Pages\LiarDicePage.xaml.cs">
+      <DependentUpon>LiarDicePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BinSrc\Pages\LocalDicingPage.xaml.cs">
+      <DependentUpon>LocalDicingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BinSrc\Pages\OnlineDicingPage.xaml.cs">
+      <DependentUpon>OnlineDicingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BinSrc\Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="BinSrc\Pages\TrueWordAndBudRedhead.xaml.cs">
       <DependentUpon>TrueWordAndBudRedhead.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BinSrc\UserProfileHelper.cs" />
-    <Compile Include="BinSrc\UserRegisterHelper.cs" />
     <Compile Include="BinSrc\GlobalVars.cs" />
-    <Compile Include="BinSrc\CrazyPartyTile.cs" />
-    <Compile Include="BinSrc\CrazyPartyTileConverter.cs" />
-    <Compile Include="BinSrc\UserLoginHelper.cs" />
-    <Compile Include="BinSrc\UserRequestResult.cs" />
     <Compile Include="BinSrc\Pages\SpinBottlePage.xaml.cs">
       <DependentUpon>SpinBottlePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BinSrc\WebHelpers\GameInfoHelper.cs" />
+    <Compile Include="BinSrc\WebHelpers\GameHelper.cs" />
+    <Compile Include="BinSrc\WebHelpers\JsonHelper.cs" />
+    <Compile Include="BinSrc\WebHelpers\LiarDiceGameHelper.cs" />
+    <Compile Include="BinSrc\WebHelpers\UserLoginHelper.cs" />
+    <Compile Include="BinSrc\WebHelpers\UserProfileHelper.cs" />
+    <Compile Include="BinSrc\WebHelpers\UserRegisterHelper.cs" />
+    <Compile Include="BinSrc\WebHelpers\UserRequestResult.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -164,7 +195,23 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Page Include="BinSrc\BinControls\Dice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BinSrc\Pages\BullsAndCows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BinSrc\Pages\LiarDicePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BinSrc\Pages\LocalDicingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BinSrc\Pages\OnlineDicingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,6 +233,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="BinSrc\Model\DataSample.json" />
+    <None Include="BinSrc\Model\ServerMessage.json" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
@@ -197,13 +246,25 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="BinSrc\TrueWordsAndBuddRedhead.xml" />
-    <Resource Include="Toolkit.Content\ApplicationBar.Cancel.png" />
-    <Resource Include="Toolkit.Content\ApplicationBar.Check.png" />
-    <Resource Include="Toolkit.Content\ApplicationBar.Delete.png" />
-    <Resource Include="Toolkit.Content\ApplicationBar.Select.png" />
     <Resource Include="Resources\SpinBottleBG.png" />
     <Resource Include="Resources\框.png" />
     <Resource Include="Resources\Bottle.png" />
+    <Resource Include="Resources\Dices\1.png" />
+    <Resource Include="Resources\Dices\6.png" />
+    <Resource Include="Resources\Dices\2.png" />
+    <Resource Include="Resources\Dices\3.png" />
+    <Resource Include="Resources\Dices\4.png" />
+    <Resource Include="Resources\Dices\5.png" />
+    <Content Include="Icons\light\appbar.add.rest.png" />
+    <Content Include="Icons\light\appbar.back.rest.png" />
+    <Content Include="Icons\light\appbar.check.rest.png" />
+    <Content Include="Icons\light\appbar.close.rest.png" />
+    <Content Include="Icons\light\appbar.refresh.rest.png" />
+    <Content Include="Icons\light\appbar.play.rest.png" />
+    <Resource Include="Resources\LiarDiceBKG.png" />
+    <Resource Include="Resources\Avatar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="SplashScreenImage.jpg" />
     <Resource Include="Resources\GameBG.png" />
     <Content Include="SplashScreenImage.bak.jpg" />

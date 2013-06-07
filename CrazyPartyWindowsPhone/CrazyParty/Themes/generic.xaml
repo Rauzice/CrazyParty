@@ -3,16 +3,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:CrazyParty.BinSrc" >
 
-    <Style TargetType="local:CrazyPartyTile">
+    <Style TargetType="local:LocalGameTile">
         <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:CrazyPartyTile">
+                <ControlTemplate TargetType="local:LocalGameTile">
                     <Border 
                         Width="220" 
                         Height="220"
-                        BorderBrush="{StaticResource PhoneAccentBrush}"
+                        BorderBrush="Transparent"
                         BorderThickness="10">
                         <Border.Resources>
                             <local:SelectedToVisiblityConverter x:Key="SelectedToVisiblityConverter" />
@@ -31,6 +31,101 @@
                                     BorderThickness="4"
                                     Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Selected, Converter={StaticResource SelectedToVisiblityConverter}}"
                                     Width="200" Height="200">
+                                <Grid Opacity="0"></Grid>
+                            </Border>
+                        </Canvas>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="local:OnlineGameTile">
+        <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:OnlineGameTile">
+                    <Border 
+                        Width="440" 
+                        Height="220"
+                        BorderBrush="Transparent"
+                        BorderThickness="10">
+                        <Border.Resources>
+                            <local:SelectedToVisiblityConverter x:Key="SelectedToVisiblityConverter" />
+                        </Border.Resources>
+                        <Canvas>
+                            <Grid Width="420" Height="200" x:Name="obverseSide"
+                                Background="{StaticResource PhoneBackgroundBrush}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock FontSize="{StaticResource PhoneFontSizeMediumLarge}" Width="420" Grid.Row="0" Text="{TemplateBinding  Title}"/>
+                                <Grid Grid.Row="2" Width="420">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" FontSize="{StaticResource PhoneFontSizeNormal}" TextAlignment="Right" Text="当前游戏人数:"/>
+                                    <TextBlock Grid.Column="1" FontSize="{StaticResource PhoneFontSizeNormal}" TextAlignment="Center" Text="{Binding TotalPlayers, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </Grid>
+                                <Grid Grid.Row="3" Width="420">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" FontSize="{StaticResource PhoneFontSizeNormal}" TextAlignment="Right" Text="当前等待人数:"/>
+                                    <TextBlock Grid.Column="1" FontSize="{StaticResource PhoneFontSizeNormal}" TextAlignment="Center" Text="{Binding WaitingPlayers, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </Grid>
+                                <Grid Grid.Row="4" Width="420">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" FontSize="{StaticResource PhoneFontSizeNormal}" TextAlignment="Right" Text="匹配时间:"/>
+                                    <TextBlock Grid.Column="1" FontSize="{StaticResource PhoneFontSizeNormal}" TextAlignment="Center" Text="{Binding WaitingTime, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </Grid>
+                                <Grid.Triggers>
+                                    <EventTrigger RoutedEvent="Grid.Loaded">
+                                        <BeginStoryboard>
+                                            <Storyboard RepeatBehavior="Forever">
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="obverseSide">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:6" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:8" Value="0" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:14" Value="0" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:16" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Grid.Triggers>
+                            </Grid>
+                            <Grid Width="420" Height="200" x:Name="reverseSide" Background="{StaticResource PhoneBackgroundBrush}" Opacity="0">
+                                <TextBlock FontSize="{StaticResource PhoneFontSizeNormal}" TextWrapping="Wrap" Width="400" Text="{TemplateBinding Abstract}" Margin="10,0,10,0" />
+                                <Grid.Triggers>
+                                    <EventTrigger RoutedEvent="Grid.Loaded">
+                                        <BeginStoryboard>
+                                            <Storyboard RepeatBehavior="Forever">
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="reverseSide">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:6" Value="0" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:8" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:14" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:16" Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Grid.Triggers>
+                            </Grid>
+                            <Border BorderBrush="Goldenrod"
+                                    BorderThickness="4"
+                                    Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Selected, Converter={StaticResource SelectedToVisiblityConverter}}"
+                                    Width="420" Height="200">
                                 <Grid Opacity="0"></Grid>
                             </Border>
                         </Canvas>

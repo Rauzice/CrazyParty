@@ -23,7 +23,6 @@ namespace CrazyParty.BinSrc.Model
     {
         public UserInfo()
         {
-            UserId = 0;
             Username = "";
             Email = "";
             From = "";
@@ -42,7 +41,6 @@ namespace CrazyParty.BinSrc.Model
 
         public UserInfo(UserInfo user)
         {
-            UserId = user.UserId;
             Username = user.Username;
             Email = user.Email;
             From = user.From;
@@ -59,11 +57,10 @@ namespace CrazyParty.BinSrc.Model
             DicingWinCount = user.DicingWinCount;
         }
 
-        public UserInfo(int userId, string username, string email, string from, int state, int loginCount,
+        public UserInfo(string username, string email, string from, int state, int loginCount,
             DateTime lastLoginTime, string moment, DateTime birthday, string gender, string avatar,
             int liarDiceTotalCount, int liarDiceWinCount, int dicingTotalCount, int dicingWinCount)
         {
-            UserId = userId;
             Username = username;
             Email = email;
             From = from;

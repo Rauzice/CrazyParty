@@ -19,13 +19,20 @@ namespace CrazyParty.BinSrc
 {
     public class UserLoginHelper
     {
-        public void Init()
+        public UserLoginHelper(MainPage p)
+        {
+            mainPage = p;
+        }
+
+        public void LoginInit()
         {
             loginReturned = false;
             loginTimer = new DispatcherTimer();
-            lr = new LoginResult();
+            lr = new LoginResponce();
             loginTimer.Interval = TimeSpan.FromSeconds(10);
         }
+
+        private MainPage mainPage;
 
         public bool CheckUserNameFormat(string username)
         {
@@ -44,22 +51,26 @@ namespace CrazyParty.BinSrc
 
         private bool loginReturned;
         private DispatcherTimer loginTimer;
-        private LoginResult lr;
+        private LoginResponce lr;
 
         public void Login(string username, string password, MainPage mp)
         {
+            LoginInit();
+
+            GlobalVars.userid = 0;
+
             if (!CheckUserNameFormat(username))
             {
                 lr.code = 101;
-                lr.message = "用户名格式不正确";
-                loginFailed(mp);
+                lr.content.message = "用户名格式不正确";
+                loginFailed(lr.content as ResLoginContent);
                 return;
             }
             if (!CheckPasswordFormat(password))
             {
                 lr.code = 102;
-                lr.message = "密码长度应为6—20";
-                loginFailed(mp);
+                lr.content.message = "密码长度应为6—20";
+                loginFailed(lr.content as ResLoginContent);
                 return;
             }
 
@@ -84,21 +95,21 @@ namespace CrazyParty.BinSrc
                 loginReturned = true;
                 if (e.Error != null)
                 {
-                    lr = new LoginResult() { code = 404, message = e.Error.Message };
+                    lr = new LoginResponce() { code = 404, content = new  ResLoginContent() { message = e.Error.Message } };
                 }
                 else
                 {
                     MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(e.Result));
-                    DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(LoginResult));
-                    lr = (LoginResult)serializer.ReadObject(ms);
+                    DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(LoginResponce));
+                    lr = (LoginResponce)serializer.ReadObject(ms);
                 }
                 if (lr.code == 200)
                 {
-                    loginSuccess(mp);
+                    loginSuccess(lr.content as ResLoginContent);
                 }
                 else
                 {
-                    loginFailed(mp);
+                    loginFailed(lr.content as ResLoginContent);
                 }
             };
             loginWC.UploadStringAsync(loginPath, "POST", parameters.ToString());
@@ -109,25 +120,34 @@ namespace CrazyParty.BinSrc
                     return;
                 loginTimer.Stop();
                 loginReturned = true;
-                lr = new LoginResult() { code = 400, message = "连接服务器超时." };
-                loginFailed(mp);
+                lr = new LoginResponce() { code = 400, content = new ResLoginContent() { message = "连接服务器超时." } };
+                loginFailed(lr.content as ResLoginContent);
             };
             loginTimer.Start();
         }
 
-        private void loginSuccess(MainPage mp)
+        private void loginSuccess(ResLoginContent content)
         {
-            mp.usernameTextBlock.Text = mp.loginName.Text;
-            mp.loginGrid.Visibility = System.Windows.Visibility.Collapsed;
-            mp.userGrid.Visibility = System.Windows.Visibility.Visible;
-            ((Microsoft.Phone.Shell.ApplicationBarIconButton)mp.ApplicationBar.Buttons[0]).IsEnabled = true;
+            GlobalVars.userid = content.userid;
+
+            mainPage.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                mainPage.usernameTextBlock.Text = mainPage.loginName.Text;
+                mainPage.loginGrid.Visibility = System.Windows.Visibility.Collapsed;
+                mainPage.userGrid.Visibility = System.Windows.Visibility.Visible;
+                mainPage.loginSubmitBtn.IsEnabled = true;
+                mainPage.startOnlineGameBtn.IsEnabled = true;
+            }));
         }
 
-        private void loginFailed(MainPage mp)
+        private void loginFailed(ResLoginContent content)
         {
-            string msg = "登陆失败. " + lr.message;
-            MessageBox.Show(msg);
-            ((Microsoft.Phone.Shell.ApplicationBarIconButton)mp.ApplicationBar.Buttons[0]).IsEnabled = true;
+            mainPage.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                string msg = "登陆失败. " + content.message;
+                MessageBox.Show(msg);
+                mainPage.loginSubmitBtn.IsEnabled = true;
+            }));
         }
     }
 }

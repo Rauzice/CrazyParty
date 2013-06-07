@@ -21,7 +21,11 @@ E:\projects\Windows Phone\CrazyParty\CrazyParty\obj\Debug\BinSrc\Pages\RegisterP
 E:\projects\Windows Phone\CrazyParty\CrazyParty\obj\Debug\BinSrc\Pages\TrueWordAndBudRedhead.g.i.cs
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\ResolveAssemblyReference.cache
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\App.g.i.cs
+E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\BinSrc\BinControls\Dice.g.i.cs
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\BinSrc\Pages\BullsAndCows.g.i.cs
+E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\BinSrc\Pages\LiarDicePage.g.i.cs
+E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\BinSrc\Pages\LocalDicingPage.g.i.cs
+E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\BinSrc\Pages\OnlineDicingPage.g.i.cs
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\BinSrc\Pages\RegisterPage.g.i.cs
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\BinSrc\Pages\SpinBottlePage.g.i.cs
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\obj\Debug\BinSrc\Pages\TrueWordAndBudRedhead.g.i.cs
@@ -42,6 +46,7 @@ E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\SuperSocket.ClientEngine.Proxy.dll
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\Microsoft.Phone.Controls.xml
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\Microsoft.Phone.Controls.Toolkit.pdb
+E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\Microsoft.Phone.Controls.Toolkit.xml
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\SuperSocket.ClientEngine.Common.pdb
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\SuperSocket.ClientEngine.Core.pdb
 E:\projects\Windows Phone\CrazyParty\CrazyPartyWindowsPhone\CrazyParty\Bin\Debug\SuperSocket.ClientEngine.Protocol.pdb

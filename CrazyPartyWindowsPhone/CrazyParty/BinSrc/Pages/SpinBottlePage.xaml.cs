@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using System.Windows.Threading;
+using System.ComponentModel;
 
 namespace CrazyParty
 {
@@ -19,7 +20,7 @@ namespace CrazyParty
         Clockwise, AntiClockwise
     }
 
-    public partial class SpinBottlePage : PhoneApplicationPage
+    public partial class SpinBottlePage : PhoneApplicationPage, INotifyPropertyChanged
     {
         public SpinBottlePage()
         {
@@ -31,7 +32,19 @@ namespace CrazyParty
         public int NumberofPeople
         {
             get { return numberofPeople; }
-            set { numberofPeople =(int)value; }
+            set 
+            { 
+                numberofPeople =(int)value;
+                OnPropertyChanged(new PropertyChangedEventArgs("NumberofPeople"));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public virtual void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, args);
+            }
         }
 
         private void myInit()

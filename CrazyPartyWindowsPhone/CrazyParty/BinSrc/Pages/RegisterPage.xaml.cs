@@ -28,7 +28,7 @@ namespace CrazyParty.BinSrc.Pages
             string password1 = registerPassword1.Password;
 
             ((Microsoft.Phone.Shell.ApplicationBarIconButton)ApplicationBar.Buttons[0]).IsEnabled = false;
-            GlobalVars.userRegisterHelper.Init();
+            GlobalVars.userRegisterHelper.Init(this);
             GlobalVars.userRegisterHelper.Register(username, password, password1, this);
         }
 

@@ -8,6 +8,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:CrazyParty.BinSrc"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:mode="clr-namespace:CrazyParty.BinSrc.Model"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -16,9 +18,11 @@
     shell:SystemTray.IsVisible="True"
     shell:SystemTray.Opacity="0"
     >
-    
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneAccentBrush}">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources\GameBG.png" />
+        </Grid.Background>
         <controls:Pivot x:Name="CPPivote" Title="聚会太疯狂" SelectionChanged="Pivot_SelectionChanged">
             <!--Pivot item one-->
             <controls:PivotItem Header="本地">
@@ -45,27 +49,27 @@
                             <ColumnDefinition Width="8" />
                         </Grid.ColumnDefinitions>
                         <ListBox x:Name="gameList" Grid.Column="1" >
-                            <local:CrazyPartyTile
+                            <local:LocalGameTile
                                 x:Name="game0"
                                 Title="转瓶子"
                                 Selected="True"
                                 Abstract="上局输的人A用手指拨动瓶子， 使瓶子转动.当瓶子停下时瓶口所指向的人将得到惩罚。" Click="GameTile_Click" />
-                            <local:CrazyPartyTile 
+                            <local:LocalGameTile 
                                 x:Name="game1"
                                 Title="摇骰子"
                                 Abstract="上局输的人A轻轻摇动手机, 停下后将得到几个骰子的点数.骰子点数之和为N,则A之后的第N个人接受惩罚吧！" Click="GameTile_Click" />
-                            <local:CrazyPartyTile 
+                            <local:LocalGameTile 
                                 x:Name="game2"
                                 Title="猜数字" 
                                 Abstract="上局输的人A出一个数字并记录下来。A之后玩家的开始猜这个数，若猜中就要受处罚，否则A告诉其他人这个数字是偏大或小。" Click="GameTile_Click" />
                         </ListBox>
                         <ListBox x:Name="punishmentList" Grid.Column="2" >
-                            <local:CrazyPartyTile
+                            <local:LocalGameTile
                                 x:Name="punishment0"
                                 Title="真心话大冒险"
                                 Selected="True"
                                 Abstract="应用会弹出一条真心话或大冒险，如果是真心话，输者必须全部如实回答；如果是大冒险，输者必须努力完成." Click="PunishmentTile_Click" />
-                            <local:CrazyPartyTile
+                            <local:LocalGameTile
                                 x:Name="punishment1"
                                 Title="啤酒转盘"
                                 Abstract="每个人面前都有一个酒杯，若输的人的酒杯有酒，则一饮而尽；没有酒则为桌上的一个空杯子倒酒(可多可少)." Click="PunishmentTile_Click" />
@@ -76,7 +80,26 @@
 
             <!--Pivot item two-->
             <controls:PivotItem Header="联网">
-                <Grid/>
+                <Grid x:Name="ContentPanel" Grid.Row="1">
+                    <Grid Grid.Row="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="8"/>
+                            <ColumnDefinition Width="440"/>
+                            <ColumnDefinition Width="8" />
+                        </Grid.ColumnDefinitions>
+                        <ListBox x:Name="onlineGameList" Grid.Column="1" >
+                            <local:OnlineGameTile
+                                x:Name="onlineGame0"
+                                Title="转瓶子"
+                                Selected="True" TotalPlayers="4" WaitingPlayers="3" 
+                                Abstract="开始游戏时，各参加者需要摇骰，然后自己看骰盅里面的骰子，不让其他人看到。一位参加者喊出X个Y。下一位顺时针参加者喊出新的骰子数目和点数，喊出新的骰子数目和点数，X必须大于或等于上一次叫喊的，但如果X与上一位的相同的话，Y的点数必须大于上一位；如果X大于上一位的，Y的点数无须大于上一位，当然此时玩家也可以叫转斋，转斋只要满足X大于或等于上一位叫喊的即可。每一位玩家叫喊新的骰子数目和点数，直至有玩家开杀上一位叫骰者，并规定惩罚码数后，清点所有上一位玩家叫喊过的Y点的骰子。如果Y点骰子数目等于或大于上一位玩家叫喊过的X，即开杀玩家输，反之则赢，负方喝完酒后，游戏重新开始。 " Click="OnlineGameTile_Click" />
+                            <local:OnlineGameTile 
+                                x:Name="onlineGame1"
+                                Title="摇骰子" TotalPlayers="6" WaitingPlayers="3" 
+                                Abstract="两个玩家分别摇动骰子，比比大小吧！" Click="OnlineGameTile_Click" />
+                        </ListBox>
+                    </Grid>
+                </Grid>
             </controls:PivotItem>
             <controls:PivotItem x:Name="AccountManager" Header="账号">
                 <Grid>

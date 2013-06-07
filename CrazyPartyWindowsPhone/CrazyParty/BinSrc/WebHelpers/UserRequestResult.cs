@@ -13,33 +13,30 @@ using System.Runtime.Serialization;
 
 namespace CrazyParty.BinSrc
 {
-    public class LoginResult
+    [DataContract]
+    public class LoginResponce : BinResponce
     {
-        public LoginResult()
+        public LoginResponce()
         {
             code = 0;
-            message = "";
-            user = new UserInfo();
+            content = new ResLoginContent();
         }
 
-        [DataMember]
-        public int code { get; set; }
 
         [DataMember]
-        public string message { get; set; }
-
-        [DataMember]
-        public UserInfo user { get; set; }
+        public ResLoginContent content { get; set; }
     }
 
-    public class RegisterResult
+    [DataContract]
+    public class RegisterResponce : BinResponce
     {
-        public RegisterResult()
+        public RegisterResponce()
         {
             code = 0;
-            message = "";
+            content = new ResRegisterContent();
         }
-        public int code { get; set; }
-        public string message { get; set; }
+
+        [DataMember]
+        public ResRegisterContent content { get; set; }
     }
 }
